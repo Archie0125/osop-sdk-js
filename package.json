@@ -1,0 +1,48 @@
+{
+  "name": "@osop/sdk",
+  "version": "0.1.0",
+  "description": "Official OSOP JavaScript/TypeScript SDK — programmatic access to validate, run, render, and test OSOP workflows.",
+  "license": "Apache-2.0",
+  "author": "OSOP Contributors <hello@osop.ai>",
+  "homepage": "https://osop.ai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osop/osop-sdk-js"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.0.0",
+    "eslint": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "osop",
+    "workflow",
+    "sdk",
+    "automation",
+    "sop"
+  ]
+}
