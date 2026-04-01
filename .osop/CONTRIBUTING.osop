@@ -1,0 +1,91 @@
+osop_version: "1.0"
+id: "contributing-osop-sdk-js"
+name: "Contributing to OSOP JavaScript SDK"
+description: "How to contribute to the JavaScript/TypeScript SDK for parsing, validating, and executing OSOP workflows."
+version: "1.0.0"
+status: "active"
+usage: "reference"
+tags: [meta, dogfooding, contributing, sdk, javascript, typescript]
+
+nodes:
+  - id: "setup"
+    type: "cli"
+    subtype: "script"
+    name: "Setup"
+    description: "Clone repo, run npm install. Requires Node.js 18+."
+    timeout_sec: 60
+
+  - id: "branch"
+    type: "git"
+    subtype: "branch"
+    name: "Create Branch"
+    description: "Create a feature branch from main."
+
+  - id: "implement"
+    type: "human"
+    name: "Implement"
+    description: "Write your feature or fix in TypeScript. Follow existing patterns in src/."
+
+  - id: "test"
+    type: "cicd"
+    subtype: "test"
+    name: "Run Tests"
+    description: "Run npm test. All tests must pass."
+    timeout_sec: 120
+
+  - id: "type-check"
+    type: "cicd"
+    subtype: "test"
+    name: "Type Check"
+    description: "Run npx tsc --noEmit."
+    timeout_sec: 60
+
+  - id: "submit-pr"
+    type: "git"
+    subtype: "pr"
+    name: "Submit PR"
+    description: "Create PR describing the change and how it was tested."
+
+  - id: "review"
+    type: "human"
+    subtype: "review"
+    name: "Review"
+    description: "Maintainer reviews for API consistency, test coverage, and TypeScript types."
+    approval_gate:
+      required: true
+      min_approvals: 1
+
+  - id: "publish"
+    type: "cli"
+    subtype: "script"
+    name: "Publish to npm"
+    description: "Maintainer publishes new version to npm after merge."
+    security:
+      risk_level: "high"
+
+edges:
+  - from: "setup"
+    to: "branch"
+    mode: "sequential"
+  - from: "branch"
+    to: "implement"
+    mode: "sequential"
+  - from: "implement"
+    to: "test"
+    mode: "sequential"
+  - from: "test"
+    to: "type-check"
+    mode: "parallel"
+  - from: "test"
+    to: "submit-pr"
+    mode: "sequential"
+  - from: "test"
+    to: "implement"
+    mode: "fallback"
+    label: "Tests failed"
+  - from: "submit-pr"
+    to: "review"
+    mode: "sequential"
+  - from: "review"
+    to: "publish"
+    mode: "sequential"
