@@ -12,6 +12,12 @@ export type { OsopClientOptions } from "./client.js";
 export { generateHtmlReport, generateTextReport } from "./report.js";
 export type { ReportOptions } from "./report.js";
 
+export { renderOsopHtml, renderOsopCli } from "./render-html.js";
+export type { RenderOptions } from "./render-html.js";
+
+export { renderSopDocHtml, renderSopDocCli, parseSopFile } from "./render-sop.js";
+export type { SopDocument, SopSection, SopWorkflowRef, SopDocRenderOptions } from "./render-sop.js";
+
 export type {
   NodeType,
   EdgeMode,

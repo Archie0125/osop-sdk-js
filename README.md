@@ -3,7 +3,9 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![npm](https://img.shields.io/npm/v/@osop/sdk)](https://www.npmjs.com/package/@osop/sdk)
 
-Official JavaScript/TypeScript SDK for OSOP (Open Standard Operating Procedures). Provides `OsopClient` for programmatic access to validate, run, render, and test OSOP workflows.
+**Serves both SOP Doc and The Loop.** Build workflow viewers and optimization tools in JS/TS.
+
+Parse .osop files, validate against schema, render to Mermaid diagrams. Build custom SOP Doc viewers or integrate The Loop into your applications.
 
 Website: [osop.ai](https://osop.ai) | GitHub: [github.com/osop/osop-sdk-js](https://github.com/osop/osop-sdk-js)
 
