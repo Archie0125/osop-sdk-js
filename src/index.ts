@@ -23,8 +23,6 @@ export type {
   EdgeMode,
   OsopNode,
   OsopEdge,
-  OsopInput,
-  OsopOutput,
   OsopWorkflow,
   ValidationResult,
   ValidationError,
